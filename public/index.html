@@ -1,0 +1,95 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vesper Stream</title>
+    <link rel="stylesheet" href="/public/styles.css" />
+  </head>
+  <body>
+    <div class="bg-shape bg-shape-one"></div>
+    <div class="bg-shape bg-shape-two"></div>
+
+    <header class="hero">
+      <h1>Vesper Stream</h1>
+      <p>Production-ready media streaming with tokenized proxy playback and torrent orchestration.</p>
+      <div id="status" class="status">Ready</div>
+    </header>
+
+    <main class="layout">
+      <section class="panel panel-resolve">
+        <h2>Resolve Media</h2>
+        <p class="panel-subtitle">Paste a single URL, search query, or a Bunkr album link for automatic playlist extraction.</p>
+        <form id="resolve-form">
+          <label for="query">URL or search query</label>
+          <div class="row">
+            <input id="query" type="text" placeholder="Paste URL or type keywords" required />
+            <button type="submit">Resolve</button>
+          </div>
+        </form>
+        <div id="resolve-results" class="list"></div>
+      </section>
+
+      <section class="panel panel-player">
+        <h2>Player</h2>
+        <video id="player" controls playsinline preload="auto"></video>
+        <div class="buffer-wrap">
+          <div class="buffer-label">
+            <span>Prebuffer</span>
+            <span id="buffer-percent">0%</span>
+          </div>
+          <div class="buffer-track">
+            <div id="buffer-fill" class="buffer-fill"></div>
+          </div>
+        </div>
+        <div id="now-playing" class="meta">Nothing playing yet.</div>
+        <div class="row buttons">
+          <button id="btn-save-history" type="button">Save Progress</button>
+          <button id="btn-add-favorite" type="button">Add Favorite</button>
+        </div>
+      </section>
+
+      <section class="panel panel-torrents">
+        <h2>AllDebrid Torrent</h2>
+        <form id="magnet-form">
+          <label for="magnet">Magnet Link</label>
+          <textarea id="magnet" rows="3" placeholder="magnet:?xt=urn:btih:..."></textarea>
+          <button type="submit">Add Magnet</button>
+        </form>
+
+        <form id="torrent-upload-form">
+          <label for="torrent-file">.torrent Upload</label>
+          <input id="torrent-file" type="file" accept=".torrent" />
+          <button type="submit">Upload .torrent</button>
+        </form>
+
+        <div class="row buttons">
+          <button id="btn-status" type="button">Check Status</button>
+          <button id="btn-init-stream" type="button">Init Stream</button>
+        </div>
+        <div id="torrent-meta" class="meta">No active torrent session.</div>
+      </section>
+
+      <section class="panel panel-library">
+        <h2>Favorites</h2>
+        <div id="favorites" class="list"></div>
+      </section>
+
+      <section class="panel panel-library">
+        <h2>History</h2>
+        <div class="row buttons">
+          <button id="btn-refresh-history" type="button">Refresh</button>
+          <button id="btn-clear-history" type="button">Clear</button>
+        </div>
+        <div id="history" class="list"></div>
+      </section>
+
+      <section class="panel panel-library">
+        <h2>Uploads Metadata</h2>
+        <div id="uploads" class="list"></div>
+      </section>
+    </main>
+
+    <script src="/public/app.js" defer></script>
+  </body>
+</html>

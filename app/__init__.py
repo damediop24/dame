@@ -1,0 +1,1 @@
+﻿"""Vesper Stream application package."""
