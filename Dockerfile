@@ -19,8 +19,6 @@ ENV PORT=3000 \
     UPLOAD_DIR=/data/uploads \
     PUBLIC_DIR=/app/public
 
-VOLUME ["/data"]
-
 EXPOSE 3000
 
 CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-3000}"]
