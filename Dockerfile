@@ -13,6 +13,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY app ./app
 COPY public ./public
 COPY README.md ./README.md
+COPY run.py ./run.py
 
 ENV PORT=3000 \
     DATABASE_PATH=/data/vesper.db \
@@ -21,4 +22,4 @@ ENV PORT=3000 \
 
 EXPOSE 3000
 
-CMD ["sh", "-c", "exec uvicorn app.main:app --host 0.0.0.0 --port ${PORT}"]
+CMD ["python", "run.py"]
